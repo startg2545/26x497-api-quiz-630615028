@@ -46,7 +46,7 @@ export const AddStudentSection: FC = () => {
   const callStudentPost = async () => {
     const resp = await studentPostMutation.mutateAsync(form.values);
     if (!resp) {
-      alert("Oops, please try again later");
+      alert("Student Id already exists");
     } else if (!resp.ok) {
       alert(resp.message);
     } else {

@@ -34,6 +34,15 @@ export const POST = async (request: NextRequest) => {
   const body = (await request.json()) as StudentPostBody;
   const prisma = getPrisma();
 
+  await prisma.student.create({
+    data: {
+      studentId: body.studentId,
+      firstName: body.firstName,
+      lastName: body.lastName,
+    },
+  })
+  return NextResponse.json<StudentPostOKResponse>({ ok: true });
+
   //4. Add new Student data
   // await prisma...
 
