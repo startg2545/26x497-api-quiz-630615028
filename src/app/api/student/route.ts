@@ -10,11 +10,12 @@ export type StudentGetResponse = {
 export const GET = async () => {
   const prisma = getPrisma();
 
+  const students = await prisma.student.findMany();
   //2. Display list of student
   // const students = await prisma...
 
   return NextResponse.json<StudentGetResponse>({
-    students: [], //replace empty array with result from DB
+    students: students, //replace empty array with result from DB
   });
 };
 
